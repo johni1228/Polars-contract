@@ -1,8 +1,8 @@
-const MyLittleComputer = artifacts.require('MyLittleComputer');
-const baseURI = 'http://54.146.118.202/computer-api/v0/nfts/';
+const PlayfulPolars = artifacts.require('PlayfulPolars');
+const baseURI = 'heroku url';
 
 module.exports = function(deployer) {
-  deployer.deploy(MyLittleComputer, baseURI).then(() => {
-    console.log('MyLittleComputer is deployed.');
+  deployer.deploy(PlayfulPolars, baseURI).then(() => {
+    console.log('PlayfulPolars is deployed.');
   });
 };

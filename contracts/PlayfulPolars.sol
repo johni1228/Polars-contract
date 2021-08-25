@@ -8,22 +8,25 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/utils/math/SafeMath.sol";
 import "@openzeppelin/contracts/utils/Counters.sol";
 import "./ERC721Pausable.sol";
-contract MyLittleComputer is ERC721Enumerable, Ownable, ERC721Burnable, ERC721Pausable {
+
+// this made by liberato
+
+contract PlayfulPolars is ERC721Enumerable, Ownable, ERC721Burnable, ERC721Pausable {
     using SafeMath for uint256;
     using Counters for Counters.Counter;
 
     Counters.Counter private _tokenIdTracker;
 
     uint256 public constant MAX_ELEMENTS = 10000;
-    uint256 public constant PRICE = 5 * 10**16;
+    uint256 public constant PRICE = 3 * 10**16;
     uint256 public constant MAX_BY_MINT = 20;
-    uint256 public constant MAX_BY_OWNER = 20;
-    address public constant creatorAddress = 0x4B3aacFd767D7F030984E4cD4261927De5c0bcF6; // TODO: update
-    address public constant devAddress = 0x4B3aacFd767D7F030984E4cD4261927De5c0bcF6; // TODO: update
+
+    address public constant creatorAddress = 0x8A1eAA7f43D44D06ac1b7677FD6B979538EBc652; // TODO: update
+    address public constant devAddress = 0x8A1eAA7f43D44D06ac1b7677FD6B979538EBc652; // TODO: update
     string public baseTokenURI;
 
-    event CreateComputer(uint256 indexed id);
-    constructor(string memory baseURI) ERC721("MyLittleComputer", "MLC") {
+    event CreatePolar(uint256 indexed id);
+    constructor(string memory baseURI) ERC721("Playful Polars", "POLA") {
         setBaseURI(baseURI);
         pause(true);
     }
@@ -47,8 +50,6 @@ contract MyLittleComputer is ERC721Enumerable, Ownable, ERC721Burnable, ERC721Pa
         require(total <= MAX_ELEMENTS, "Sale end");
         require(_count <= MAX_BY_MINT, "Exceeds number");
         require(msg.value >= price(_count), "Value below price");
-        uint256 ownedNftCount = balanceOf(_to);
-        require(ownedNftCount + _count <= MAX_BY_OWNER, "Can't have more than 20 NFTs");
 
         for (uint256 i = 0; i < _count; i++) {
             _mintAnElement(_to);
@@ -58,7 +59,7 @@ contract MyLittleComputer is ERC721Enumerable, Ownable, ERC721Burnable, ERC721Pa
         uint id = _totalSupply();
         _tokenIdTracker.increment();
         _safeMint(_to, id);
-        emit CreateComputer(id);
+        emit CreatePolar(id);
     }
     function price(uint256 _count) public pure returns (uint256) {
         return PRICE.mul(_count);
