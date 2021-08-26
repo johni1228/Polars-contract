@@ -1,4 +1,4 @@
-# Little Computer NFT Contract
+# Polars NFT Contract
 
 ## Getting Started
 
@@ -17,7 +17,7 @@ Open [https://forum.openzeppelin.com/t/create-an-nft-and-deploy-to-a-public-test
 
 Clone the repository to your local drive.
 ```bash
-$ git clone https://github.com/johni1228/computer-nft
+$ git clone https://github.com/johni1228/Polars-contract
 ```
 
 Update your truffle configuration file.
@@ -35,7 +35,7 @@ In truffle-config.js, you have to change api-keys with your api-key.
 
 Edit `migrations/1_initial_migration.js` file to update `baseURI` to your own URL.
 ```js
-const MyLittleComputer = artifacts.require('MyLittleComputer');
+const Polars = artifacts.require('Polars
 const baseURI = 'https://computer-nft.herokuapp.com/api/v0/nfts/'; // TODO: update to your heroku app url
 ...
 ```
@@ -43,6 +43,6 @@ const baseURI = 'https://computer-nft.herokuapp.com/api/v0/nfts/'; // TODO: upda
 Deploy and verify your contracts on the mainNet.
 
 ```bash
-$ truffle deploy MyLittleComputer --network mainNet
-$ truffle run verify MyLittleComputer --network mainNet
+$ truffle deploy Polars --network mainNet
+$ truffle run verify Polars --network mainNet
 ```
